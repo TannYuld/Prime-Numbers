@@ -17,6 +17,7 @@ public class Main
                 System.out.println("3- Get Random Prime Between Your Inputs. (2 inputs)");
                 System.out.println("4- Get All Primes Between Your Inputs. (2 inputs)");
                 System.out.println("5- Check If Your Input Is A Prime.");
+                System.out.println("6- Get Value Between Two Primes. (1 (2-3), 2 (3-5))");
                 System.out.println("-------------------------\n");
                 System.out.print("Please enter your input: ");
                 int val1,val2;
@@ -61,6 +62,11 @@ public class Main
                             {
                                 System.out.println("Your number is not prime");
                             }
+                            break;
+
+                        case 6:
+                            System.out.print("input: ");
+                            System.out.println(getValueBetweenPrimes(new Scanner(System.in).nextInt()));
                             break;
 
                         default:
@@ -149,5 +155,26 @@ public class Main
 
         System.out.println("There are "+(primeNumber.size()+1)+" primes.");
         return primeNumber;
+    }
+
+    public static ArrayList<Integer> getValueBetweenPrimes(int value1)
+    {
+        ArrayList<Integer> primeNumber = new ArrayList<Integer>();
+        ArrayList<Integer> valuesBetweenPrimes = new ArrayList<Integer>();
+
+        for(int i=2;i<value1;i++)
+        {
+            if(isPrime(i))
+            {
+                primeNumber.add(i);
+
+                if(primeNumber.size() > 1)
+                {
+                    valuesBetweenPrimes.add(primeNumber.get(primeNumber.size()-1) - primeNumber.get(primeNumber.size()-2));
+                }
+            }
+        }
+
+        return valuesBetweenPrimes;
     }
 }
